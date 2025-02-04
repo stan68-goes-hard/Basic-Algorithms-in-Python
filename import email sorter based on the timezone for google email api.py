@@ -31,14 +31,22 @@ def fetch_emails(service, user_id='me'):
 # Create Gmail API service
 service = create_gmail_service()
 
-# Fetch emails
+# Fetch emails from Gmail
 emails = fetch_emails(service)
-# Sample email data
-emails = [
-    {"subject": "Meeting in PST", "body": "Let's meet at 10 AM PST", "date": "2023-10-01 10:00:00"},
-    {"subject": "Meeting in EST", "body": "Let's meet at 10 AM EST", "date": "2023-10-01 10:00:00"},
-    {"subject": "Meeting in GMT", "body": "Let's meet at 10 AM GMT", "date": "2023-10-01 10:00:00"},
-]
+
+# Print emails
+for email in emails:
+    print(f"Subject: {email['subject']}, Date: {email['date']}")
+    # Updated timezones to Russian timezones
+    timezones = {
+        "MSK": "Europe/Moscow",
+        "SAMT": "Europe/Samara",
+        "YEKT": "Asia/Yekaterinburg",
+        "VLAT": "Asia/Vladivostok",
+    }
+    
+    
+
 
 # Function to extract timezone from subject
 def extract_timezone(subject):
